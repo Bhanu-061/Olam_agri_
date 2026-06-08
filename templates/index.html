@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vision AI Bag Counting Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="dashboard-wrap">
+    <header class="top-header">
+      <div class="logo-strip left-logo">
+        <img src="{{ url_for('static', filename='img/company_logo.jpg') }}" class="logo-img" alt="Company Logo">
+      </div>
+      <div class="header-center">
+        <h1 class="dashboard-title">Vision AI Bag Counting Dashboard</h1>
+        <div class="header-time" id="liveTime">--:--:--</div>
+      </div>
+      <div class="logo-strip right-logo">
+        <img src="{{ url_for('static', filename='img/Olam_agri.png') }}" class="logo-img" alt="Client Logo">
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="video-panel">
+        <div class="video-toolbar">
+          <button class="btn btn-sm btn-info" id="btnFullscreen">Fullscreen</button>
+          <button class="btn btn-sm btn-warning" id="btnToggle">Pause</button>
+          <button class="btn btn-sm btn-light" id="btnSnapshot">Snapshot</button>
+          <a class="btn btn-sm btn-success" href="/export_csv">Export CSV</a>
+          <span class="record-dot" id="recordDot">REC</span>
+        </div>
+        <div class="video-frame-wrap" id="videoContainer">
+          <img src="/video_feed" alt="Live Feed" class="live-video" id="liveVideo">
+          <div class="video-overlay-box">
+            <div>FPS: <span id="ovFps">0</span></div>
+            <div>Active IDs: <span id="ovActive">0</span></div>
+            <div>Detections: <span id="ovDetections">0</span></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="analytics-panel">
+        <div class="card glass-card c1-card">
+          <div class="card-body">
+            <h6>Conveyor 1</h6>
+            <div class="big-count" id="c1Count">0</div>
+            <div>Active IDs: <span id="c1Active">0</span></div>
+            <div>Status: <span id="c1Status">-</span></div>
+            <div>Last Detection: <span id="c1Last">-</span></div>
+          </div>
+        </div>
+        <div class="card glass-card c2-card mt-2">
+          <div class="card-body">
+            <h6>Conveyor 2</h6>
+            <div class="big-count" id="c2Count">0</div>
+            <div>Active IDs: <span id="c2Active">0</span></div>
+            <div>Status: <span id="c2Status">-</span></div>
+            <div>Last Detection: <span id="c2Last">-</span></div>
+          </div>
+        </div>
+        <div class="card glass-card mt-2">
+          <div class="card-body">
+            <h6>System Health</h6>
+            <div class="metric-row">GPU <div class="progress"><div id="gpuBar" class="progress-bar bg-info"></div></div></div>
+            <div class="metric-row">CPU <div class="progress"><div id="cpuBar" class="progress-bar bg-warning"></div></div></div>
+            <div class="metric-row">RAM <div class="progress"><div id="ramBar" class="progress-bar bg-success"></div></div></div>
+            <div>Camera: <span id="cameraStatus">-</span></div>
+            <div>Inference: <span id="inferSpeed">0</span> ms</div>
+          </div>
+        </div>
+        <div class="card glass-card mt-2 logs-card">
+          <div class="card-body">
+            <h6>Live Event Logs</h6>
+            <div id="eventLog" class="event-log"></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="status-bar">
+      <span>System: <b id="sysState">ONLINE</b></span>
+      <span>Model: <b id="modelName">-</b></span>
+      <span>GPU: <b id="gpuName">-</b></span>
+      <span>Version: <b id="verInfo">-</b></span>
+    </footer>
+  </div>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

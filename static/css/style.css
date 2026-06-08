@@ -1,0 +1,115 @@
+:root {
+  --bg0: #06090d;
+  --bg1: #101923;
+  --cyan: #22d3ee;
+  --yellow: #facc15;
+  --card: rgba(18, 27, 36, 0.62);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 10%, #1a2d3d 0%, var(--bg0) 55%);
+  color: #e8f1ff;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+.dashboard-wrap { height: 100vh; display: grid; grid-template-rows: 90px 1fr 44px; }
+.top-header {
+  display: grid; grid-template-columns: 1fr 1.4fr 1fr; align-items: center;
+  padding: 0 16px; background: linear-gradient(120deg, #0e1621, #1d2e3b);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.25);
+}
+.logo-strip { display: flex; gap: 10px; }
+.left-logo { justify-content: flex-start; }
+.right-logo { justify-content: flex-end; }
+.header-center { text-align: center; }
+.logo-img {
+  width: 130px;
+  height: 52px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  border-radius: 10px;
+  padding: 4px;
+}
+.dashboard-title { text-align: center; margin: 0; font-size: 1.5rem; }
+.header-time { margin-top: 4px; text-align: center; font-weight: 700; color: var(--cyan); }
+.main-grid { display: grid; grid-template-columns: 80% 20%; gap: 12px; padding: 12px; min-height: 0; }
+.video-panel { min-height: 0; display: flex; flex-direction: column; }
+.video-toolbar { margin-bottom: 8px; display: flex; gap: 8px; align-items: center; }
+.record-dot { margin-left: auto; color: #ff6464; font-weight: 800; letter-spacing: 1px; }
+.video-frame-wrap {
+  position: relative; flex: 1; min-height: 0; border-radius: 16px; overflow: hidden;
+  background: #000; border: 1px solid rgba(34, 211, 238, 0.33); box-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+}
+.live-video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+.video-overlay-box {
+  position: absolute; top: 16px; left: 16px; padding: 10px 12px; border-radius: 10px;
+  background: rgba(5, 16, 24, 0.68); border: 1px solid rgba(250, 204, 21, 0.5);
+}
+.analytics-panel { min-height: 0; display: flex; flex-direction: column; }
+.glass-card {
+  background: var(--card); border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(7px); border-radius: 14px;
+}
+.c1-card { border-color: rgba(250, 204, 21, 0.65); box-shadow: 0 0 16px rgba(250, 204, 21, 0.2); }
+.c2-card { border-color: rgba(34, 211, 238, 0.65); box-shadow: 0 0 16px rgba(34, 211, 238, 0.22); }
+.big-count { font-size: 2rem; font-weight: 800; line-height: 1.1; }
+.c1-card {
+  background: linear-gradient(145deg, rgba(60, 48, 8, 0.86), rgba(28, 23, 4, 0.82));
+  border-color: rgba(250, 204, 21, 0.95);
+  box-shadow: 0 0 24px rgba(250, 204, 21, 0.42);
+}
+.c2-card {
+  background: linear-gradient(145deg, rgba(8, 44, 53, 0.86), rgba(5, 22, 29, 0.82));
+  border-color: rgba(34, 211, 238, 0.95);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.45);
+}
+.c1-card .big-count {
+  color: #ffe97a;
+  text-shadow: 0 0 14px rgba(250, 204, 21, 0.55);
+}
+.c2-card .big-count {
+  color: #8cf7ff;
+  text-shadow: 0 0 14px rgba(34, 211, 238, 0.6);
+}
+.c1-card h6,
+.c1-card div,
+.c1-card span {
+  color: #fff4b8;
+}
+.c2-card h6,
+.c2-card div,
+.c2-card span {
+  color: #baf8ff;
+}
+.c1-card h6 {
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+.c2-card h6 {
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.55);
+}
+.metric-row { margin-bottom: 8px; }
+.progress { height: 9px; background: rgba(255,255,255,0.09); }
+.logs-card { flex: 1; min-height: 0; }
+.event-log {
+  height: 100%; max-height: 240px; overflow-y: auto; font-family: Consolas, monospace;
+  background: rgba(0,0,0,0.35); border-radius: 8px; padding: 8px;
+}
+.status-bar {
+  padding: 0 14px; display: flex; gap: 22px; align-items: center; background: #0d141b;
+  border-top: 1px solid rgba(34,211,238,0.2); font-size: 0.9rem;
+}
+@media (max-width: 1100px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .analytics-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .logs-card { grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+  .top-header { grid-template-columns: 1fr; gap: 6px; padding: 10px; height: auto; }
+  .dashboard-wrap { grid-template-rows: auto 1fr 44px; }
+  .logo-strip, .left-logo, .right-logo { justify-content: center; }
+  .dashboard-title, .header-time { text-align: center; }
+}
